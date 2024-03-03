@@ -29,7 +29,7 @@ async def main():
 
 nicknames = asyncio.run(main())
 
-with open('nicknames.pickle', 'wb') as file: 
+with open('/Users/kangsukwoo/fconline/python_crawling/picklefile/nicknames.pickle', 'wb') as file: 
     pickle.dump(nicknames, file)
 
 print('Nicknames Crawling Successfully Ended')

@@ -1,5 +1,3 @@
-import pandas as pd 
-import requests
 import os 
 from dotenv import load_dotenv, find_dotenv
 import pickle
@@ -8,7 +6,7 @@ import aiohttp
 load_dotenv(find_dotenv())
 
 # 초당 100개
-with open('20240301_nicknames.pickle', 'rb') as file:
+with open('/Users/kangsukwoo/fconline/python_crawling/picklefile/nicknames.pickle', 'rb') as file:
     nicknames = pickle.load(file)[:5000]
 headers = {'x-nxopen-api-key' : os.getenv('x-nxopen-api-key')}
 
@@ -22,7 +20,6 @@ async def get_ouid_from_api(semaphore, nickname):
     url = f'https://open.api.nexon.com/fconline/v1/id?nickname={nickname}'
     async with aiohttp.ClientSession() as session:
         response = await fetch_page(semaphore, session, url)
-        print(response)
         return response
 
 async def main():
@@ -34,5 +31,7 @@ async def main():
 
 ouid_list = asyncio.run(main())
 
-with open('ouid.pickle', 'wb') as file:
+with open('/Users/kangsukwoo/fconline/python_crawling/picklefile/ouid.pickle', 'wb') as file:
     pickle.dump(ouid_list, file)
+
+print('Ouid Crawling Successfully Ended')
