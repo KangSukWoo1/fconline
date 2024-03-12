@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import asyncio
 import aiohttp
-import pandas as pd
 import pickle
 
 async def fetch_page(session, url):
