@@ -15,5 +15,5 @@ def get_metadata(metadata: str) -> pd.DataFrame: # Load Metadata From FCOnline A
     data = pd.DataFrame(request_json)
     return data
 
-def pandas_show_all_columns():
+def pandas_show_all_columns() -> None:
     pd.set_option('display.max_columns',None)
